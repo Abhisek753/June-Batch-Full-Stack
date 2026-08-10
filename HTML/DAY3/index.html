@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forms</title>
+</head>
+
+<body>
+    <h1>Learning video tag, audio tag, form tags</h1>
+    <!-- <video controls width="150" autoplay loop>
+        <source src="video\flower.webm" type="video/webm"/>
+         <p>Your browser does not support HTML5 video. 
+         You can <a href="movie.mp4">download the video file</a> instead.
+        </p>
+     </video> -->
+
+    <!-- <audio controls   >
+        <source src="video\horse.ogvj" type="audio/ogg"/>
+        <source src="video\horse.ogv" type="audio/ogg"/>
+     </audio> -->
+
+    <form>
+        <label for="username">User Name</label><br /><br />
+        <input id="username" type="text" placeholder="Enter your name" required /><br /><br />
+        <label for="email">User Email</label><br /><br />
+        <input id="email" type="email" placeholder="Enter your email" required /><br /><br />
+        <textarea rows="8" placeholder="Write your information"></textarea>
+        <br />
+        <input type="file" />
+
+        <div>
+            <input type="radio" name="gender" value="male" />Male
+
+            <input type="radio" name="gender" value="female" />Female
+
+            <input type="radio" name="gender" value="trans" />Trans
+        </div>
+
+        <div>
+            <input type="checkbox" name="sub" value="math" />Math
+
+            <input type="checkbox" name="sub" value="science" />Science
+
+            <input type="checkbox" name="sub" value="std" />Std
+        </div>
+        <div>
+            <select>
+                <option>Select City</option>
+                <option value="Banglore">Banglore</option>
+                <option value="Pune">Pune</option>
+                <option value="Kolkata">Kolkata</option>
+            </select>
+        </div>
+
+        <br />
+        <input type="submit" />
+    </form>
+</body>
+
+</html>
