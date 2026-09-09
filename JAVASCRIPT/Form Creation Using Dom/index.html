@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Form</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Student Registration</h1>
+        <form id="studentForm">
+            <input type="text" id="name" placeholder="Enter your name" required/>
+             <input type="email" id="email" placeholder="Enter your email" required/>
+             <select id="course">
+                <option value="MERN Stack">MERN STACK</option>
+                <option value="Java">Java</option>
+                <option value=".NET">.NET</option>
+             </select>
+             <button type="submit">Add Student</button>
+        </form>
+        <h2>Student List</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Course</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+
+                
+            </tbody>
+        </table>
+    </div>
+  
+    
+    <script src="./index.js"></script>
+</body>
+</html>
