@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie App</title>
+    <link rel="stylesheet" href="./index.css"/>
 </head>
 <body>
     <nav class="navbar">
@@ -17,10 +18,15 @@
         <button class="nav-btn btn-favourite">Favourite</button>
         <a href="cart.html"><button class="nav-btn btn-cart">Cart</button></a>
         <div id="auth-section">
-            <a href="./Authentication//login.html"><button class="btn-login nav-btn">Login</button></a>
+            <a href="./Authentication/login.html"><button class="btn-login nav-btn">Login</button></a>
         </div>
     </div>
     </nav>
-    
+    <section class="carousal-section">
+        <div class="carousal-container" id="carousal-container"></div>
+        <button onclick="changeSlide(-1)" class="carousal-btn prev">Pre</button>
+        <button onclick="changeSlide(+1)" class="carousal-btn next">Next</button>
+    </section>
+    <script src="./index.js"></script>
 </body>
 </html>
