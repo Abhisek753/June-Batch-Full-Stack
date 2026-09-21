@@ -3,6 +3,56 @@ const carousalImages=[
 ]
 let currentSlide=0;
 const carousalContainer=document.getElementById("carousal-container");
+const movieContainer=document.getElementById("movie-container")
+let allMovies=[];
+
+async function getMoviesData(){
+   try{
+     const response=await fetch("http://localhost:3000/movies");
+    allMovies=await response.json();
+    displayMovies(allMovies)
+   
+   }catch(err){
+     console.log("Something went wrong",err)
+   }
+}
+function displayMovies(movies=allMovies){
+  if(!movieContainer){
+    console.log("Movie Container is missing");
+  }
+//  console.log("all movies",movies);
+  if(movies.length==0){
+    movieContainer.innerHTML=`<p>No movies found</p>`
+  }
+  movies.forEach((movie)=>{
+    const card=document.createElement("div");
+    card.className="movie-card";
+    card.innerHTML=`
+   <div class="movie-poster">
+    <img src=${movie.poster} />
+    </div>
+    <div class="movie-info">
+        <h2 class="movie-title">${movie.title}</h2> 
+        <p class="movie-year">${movie.year}</p>
+        <div class="movie-rating">
+          <span class="rating">⭐ ${movie.rating}</span>
+        </div>
+        <div class="movie-genre">
+          ${movie.Category}
+        </div>
+        <div class="movie-buttons">
+          <button class="btn btn-cart">🛒Cart</button>
+          <button class="btn btn-favourite">❤️Favourites</button>
+        </div>
+    </div>
+    `
+   movieContainer.appendChild(card);
+  })
+
+ 
+}
+
+
 
 function initCarausal(){
   console.log("test")
@@ -47,4 +97,8 @@ function initCarausal(){
     updateCarousal();
   }
   setInterval(autoNext,3000);
+
+getMoviesData();
+
+
 initCarausal()
