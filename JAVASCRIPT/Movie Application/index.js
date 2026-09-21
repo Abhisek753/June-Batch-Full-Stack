@@ -3,8 +3,18 @@ const carousalImages=[
 ]
 let currentSlide=0;
 const carousalContainer=document.getElementById("carousal-container");
-const movieContainer=document.getElementById("movie-container")
+const movieContainer=document.getElementById("movie-container");
+const searchInput=document.getElementById("search-input");
 let allMovies=[];
+
+searchInput.addEventListener("input",(e)=>{
+ const searchValue=e.target.value.toLowerCase();
+ const filteredMovies=allMovies.filter((movie)=>{
+    return movie.title.toLowerCase().includes(searchValue);
+ });
+ console.log(filteredMovies)
+ displayMovies(filteredMovies)
+})
 
 async function getMoviesData(){
    try{
@@ -16,6 +26,21 @@ async function getMoviesData(){
      console.log("Something went wrong",err)
    }
 }
+ async function handleCart(movie){
+  try{
+     await fetch("http://localhost:3000/cart",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+      },
+      body:JSON.stringify(movie)
+     })
+     alert("Movies added to caet");
+  }catch(err){
+    console.log(err);
+  }
+ }
+
 function displayMovies(movies=allMovies){
   if(!movieContainer){
     console.log("Movie Container is missing");
@@ -23,7 +48,8 @@ function displayMovies(movies=allMovies){
 //  console.log("all movies",movies);
   if(movies.length==0){
     movieContainer.innerHTML=`<p>No movies found</p>`
-  }
+  };
+  movieContainer.innerHTML="";
   movies.forEach((movie)=>{
     const card=document.createElement("div");
     card.className="movie-card";
@@ -46,6 +72,12 @@ function displayMovies(movies=allMovies){
         </div>
     </div>
     `
+    let cartBtn=card.querySelector(".btn-cart");
+    cartBtn.addEventListener("click",(e)=>{
+      e.stopPropagation();
+      handleCart(movie);
+
+    })
    movieContainer.appendChild(card);
   })
 
