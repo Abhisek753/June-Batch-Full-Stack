@@ -7,6 +7,19 @@ const movieContainer=document.getElementById("movie-container");
 const searchInput=document.getElementById("search-input");
 let allMovies=[];
 
+
+const loggedInUser=JSON.parse(localStorage.getItem("loggedInUser"));
+const authSection=document.getElementById("auth-section");
+if(loggedInUser){
+  authSection.innerHTML=`
+  <span class="user-name">Welcome, ${loggedInUser.name}</span>
+  <button class="nav-btn btn-logout" onclick="logout()">Logout</button>
+  `
+}
+function logout(){
+  localStorage.removeItem("loggedInUser");
+  location.reload();
+}
 searchInput.addEventListener("input",(e)=>{
  const searchValue=e.target.value.toLowerCase();
  const filteredMovies=allMovies.filter((movie)=>{
@@ -27,6 +40,11 @@ async function getMoviesData(){
    }
 }
  async function handleCart(movie){
+  if(!loggedInUser){
+    alert("Please Login first");
+    return 
+  }
+
   try{
      await fetch("http://localhost:3000/cart",{
       method:"POST",
@@ -83,6 +101,8 @@ function displayMovies(movies=allMovies){
 
  
 }
+
+//Auth check
 
 
 

@@ -160,3 +160,12 @@ body{
     font-size: 14px;
     font-weight: bold;
 }
+.user-name{
+    color: white;
+    margin: 0px 5px;
+    font-size: 16px;
+}
+.btn-logout{
+    background-color: red;
+    color: white;
+}
