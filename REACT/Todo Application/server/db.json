@@ -1,0 +1,24 @@
+{
+  "todos": [
+    {
+      "title": "Math homework",
+      "completed": false,
+      "id": 1
+    },
+    {
+      "title": "Swiming class tutorial",
+      "completed": true,
+      "id": 2
+    },
+    {
+      "title": "Project creation 2",
+      "completed": true,
+      "id": 4
+    },
+    {
+      "title": "Cooking curry",
+      "completed": false,
+      "id": 5
+    }
+  ]
+}
