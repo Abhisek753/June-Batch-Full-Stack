@@ -1,25 +1,21 @@
 
+import { useContext } from 'react';
 import './App.css'
-import Profile from './components/Profile';
-import UserContext from './context/UserContext'
-
+import { ThemeContext } from './context/ThemeContext';
+import Navbar from './components/Navbar';
 function App() {
-  const name="Abhisek";
-  const data={
-id:"1",
-name:"Arjun",
-age:24
-
-  }
-
+ const value=useContext(ThemeContext);
+console.log("data from theme context",value);
 
   return (
-  <UserContext.Provider value={data}>
-    <h3>My application</h3>
-    <Profile/>
+ <>
+ <Navbar/>
+ <h2>App Component</h2>
+ <button onClick={()=>value.toggleTheme()}>Change Theme</button>
+ </>
      
     
-  </UserContext.Provider>
+
   )
 }
 
