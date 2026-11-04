@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaSearch } from 'react-icons/fa';
 import Filter from '../components/Filter';
 import JobCard from '../components/JobCard';
+import { getJobs } from '../services/jobService';
 
 const JobListingPage = () => {
   const [jobs, setJobs] = useState([]);
@@ -9,24 +10,60 @@ const JobListingPage = () => {
   const [searchItem,setSearchItem]=useState('')
   const [error, setError] = useState(null);
   const [filterJobs, setFilterJobs] = useState([]);
-  const [filter, setFilter] = useState({});
+  const [filters, setFilters] = useState({});
 
 
   const fetchJobs=async ()=>{
     try{
-      const response=await fetch('  http://localhost:3000/jobs');
-      if(!response.ok){
-        throw new Error('Failed to fetch jobs');
-      }
-      const data=await response.json();
-      console.log(data);
+     
+      const data=await getJobs();
+    
       setJobs(data);
+      setFilterJobs(data);
     } catch (err) {
       setError(err.message);
     } finally {
       setLoading(false);
     }
   }
+  const handleFilterChange=(newFilter)=>{
+    // console.log("filter options", newFilter);
+     setFilters(newFilter)
+  }
+  
+  const applyFilters=()=>{
+    let result=[...jobs];
+
+    if(searchItem){
+      result=result.filter((job)=>job.title.toLowerCase().includes(searchItem.toLowerCase())||job.company.toLowerCase().includes(searchItem.toLowerCase())||job.description.toLowerCase().includes(searchItem.toLowerCase()));
+    }
+
+    // type filter
+    if(filters.type){
+      result=result.filter((job)=>job.type===filters.type);
+    }
+    // experience filter
+    if(filters.experience){
+      result=result.filter((job)=>job.experience===filters.experience);
+    }
+    // work mode filter
+    if(filters.workMode){
+      result=result.filter((job)=>job.workMode===filters.workMode);
+    }
+    // location filter
+    if(filters.location){
+      result=result.filter((job)=>job.location?.includes(filters.location));
+    }
+    // salary filter
+    if(filters.salary){
+      result=result.filter((job)=>job.salary===filters.salary);
+    }
+    setFilterJobs(result);
+  }
+
+  useEffect(()=>{
+    applyFilters();
+  },[filters,jobs,searchItem]);
 
   useEffect(()=>{
     fetchJobs();
@@ -47,19 +84,19 @@ const JobListingPage = () => {
           <div className='grid grid-cols-1 lg:grid-cols-4 gap-6'>
            {/* Filter Bar */}
             <div>
-             <Filter/>
+             <Filter onFilterChange={handleFilterChange} initialFilters={filters} />
             </div>
             {/* JobListing  */}
            <div className='lg:col-span-3'>
             <p className='text-gray-600'>Showing {jobs.length} jobs</p>
-            {jobs.length===0?(
+            {jobs?.length===0?(
 
               <div >
                 <p>No jobs found matching your criteria</p>
               </div>
             ):(
               <div >
-                {jobs.map((job)=>(
+                {filterJobs?.map((job)=>(
                    <div className='mb-2' key={job.id}>
                     <JobCard job={job}/>
                    </div>
