@@ -16,7 +16,7 @@ const JobCard = ({job}) => {
                 <img src={job.companyLogo} alt={job.company} className='w-16 h-16 rounded'/>
             )}
             <div>
-                <Link>
+                <Link to={`/jobs/${job.id}`} className='hover:underline'>
                    <h3 className='text-xl font-semibold hover:text-blue-600 mb-1'>{job.title}</h3>
                 </Link>
                 <p className='text-gray-600 mb-3'>{job.company}</p>

@@ -52,7 +52,7 @@ const Filter = ({onFilterChange,initialFilters={}}) => {
           <h3 className='text-lg font-semibold'>Filters</h3>
         </div>
         {hasActiveFilters&&(
-          <button onClick={clearFilter}  className='text-sm text-red-600 flex items-center gap-1'> 
+          <button onClick={clearFilter}  className='cursor-pointer text-sm text-red-600 flex items-center gap-1'> 
             <FaTimes/>
             Clear All</button>
         )}

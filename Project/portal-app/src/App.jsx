@@ -11,6 +11,8 @@ import JobDetailPage from "./pages/JobDetailPage";
 import CompanyDashboard from "./pages/CompanyDashboard";
 import ApplicationPage from "./pages/ApplicationPage";
 import NotFound from "./pages/NotFound";
+import { ToastContainer } from "react-toastify";
+import ApplicationDetailPage from "./pages/ApplicationDetailPage";
 
 function App() {
   return (
@@ -26,10 +28,12 @@ function App() {
               <Route path="/company/dashboard" element={<CompanyDashboard/>}/>
               <Route path="/applications" element={<ApplicationPage/>}/>
               <Route path="*" element={<NotFound/>}/>
+              <Route path="/applications/:id" element={<ApplicationDetailPage/>}/>
 
            </Route>
         </Routes>
       </BrowserRouter>
+        <ToastContainer />
     </>
   );
 }

@@ -1,9 +1,20 @@
 import React from 'react'
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import { FaBriefcase, FaBuilding, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { logout } from '../services/authService';
+import { toast } from 'react-toastify';
 const Navbar = () => {
-  let user={role:"company",name:"Abhisek"}
-  // let user;
+  const navigate=useNavigate()
+ const [user, setUser] = React.useState(JSON.parse(localStorage.getItem("user")) || null);
+
+ const handlelogout=()=>{
+  
+  logout();
+  setUser(null);
+  toast.success("Logged out successfully");
+   navigate("/login");
+ }
+
   return (
     <nav className='bg-white border-b border-gray-300'>
       <div className='container mx-auto px-4'>
@@ -15,10 +26,10 @@ const Navbar = () => {
           </Link>
           <div className='flex items-center gap-8'>
             <Link to="/jobs">Find Jobs</Link>
-             {user?.role=='company'&& 
+             {user&&user?.role=='company'&& 
               <Link className='flex items-center text-gray-700 gap-1' to="/company/dashboard"><FaBuilding/> <span>Dashboard</span></Link>
              }
-              {user?.role=='jobseeker'&& 
+              {user&&user?.role=='jobseeker'&& 
               <Link to="/myapplications" className=''><span>My Application</span></Link>
              }
              
@@ -27,7 +38,7 @@ const Navbar = () => {
           <div className='flex items-center gap-4'>
             {user?(
            <>
-              <span className='flex items-center gap-2 text-gray-700'><FaUser/><span>{user?.name}</span><button className='flex items-center gap-2 text-gray-700'><FaSignOutAlt/><span>Logout</span></button></span>
+              <span className='flex items-center gap-2 text-gray-700'><FaUser/><span>{user?.name}</span><button  onClick={handlelogout} className='cursor-pointer flex items-center gap-2 text-gray-700'><FaSignOutAlt/><span>Logout</span></button></span>
               
            </>
             ):(
