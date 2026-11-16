@@ -1,0 +1,16 @@
+{
+  "name": "backend-class",
+  "version": "1.0.0",
+  "description": "This is my first project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app.js"
+  },
+  "author": "Abhisek",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.21.1",
+    "express": "^5.3.0"
+  }
+}
