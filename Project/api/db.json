@@ -532,6 +532,39 @@
       "phone": "9898809809",
       "createdAt": "2026-04-27T13:32:10.328Z",
       "status": "active"
+    },
+    {
+      "name": "ABHISEK KUMAR",
+      "email": "kumarabhisek753@gmail.com",
+      "password": "676767",
+      "role": "jobseeker",
+      "phone": "09733905029",
+      "id": "QPYRUAk"
+    },
+    {
+      "name": "ABHISEK KUMAR",
+      "email": "kumarabhisek753@gmail.com",
+      "password": "676767",
+      "role": "jobseeker",
+      "phone": "09733905029",
+      "id": "J_jXV2d"
+    },
+    {
+      "name": "Mohan",
+      "email": "mohan@gmail.com",
+      "password": "123456",
+      "role": "jobseeker",
+      "phone": "7878789890",
+      "id": "FyhA55d"
+    },
+    {
+      "name": "Technoforte",
+      "email": "technoforte@gmail.com",
+      "password": "123456",
+      "role": "company",
+      "phone": "7878789890",
+      "companyName": "Technoforte",
+      "id": "_2c8g9Y"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

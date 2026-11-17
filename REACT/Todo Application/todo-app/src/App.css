@@ -1,0 +1,61 @@
+.container{
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: aliceblue;
+}
+
+form{
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input{
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+}
+.todo{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid #ddd;
+}
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+button{
+  padding: 8px 12px;
+  cursor: pointer;
+}
+.completed{
+  text-decoration: line-through;
+  color: gray;
+}
+.buttons button:nth-child(1){
+  background-color: gold;
+  font-weight: bold;
+}
+
+.buttons button:nth-child(3){
+  background-color: red;
+  font-weight: bold;
+  color: white;
+}
+.buttons button:nth-child(2){
+  background-color: skyblue;
+  font-weight: bold;
+  color: white;
+}
+
+button[type='submit']{
+  background-color: green;
+  font-weight: bold;
+  color: white;
+}

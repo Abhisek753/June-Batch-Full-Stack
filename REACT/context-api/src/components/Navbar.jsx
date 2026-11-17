@@ -55,6 +55,7 @@ const Navbar = () => {
       textDecoration: 'none',
       fontSize: '1rem',
       transition: 'color 0.2s',
+      cursor:"pointer"
     },
     ctaButton: {
       backgroundColor: '#007bff',
@@ -84,7 +85,7 @@ const Navbar = () => {
           <li><a href="#features" style={styles.link}>Features</a></li>
           <li><a href="#pricing" style={styles.link}>Pricing</a></li>
           <li><a href="#about" style={styles.link}>About Us</a></li>
-          <li onClick={toggleTheme} >Change Theme</li>
+          <li onClick={toggleTheme} style={styles.link}>Change Theme</li>
         </ul>
       </div>
     </nav>
